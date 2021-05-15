@@ -1,0 +1,14 @@
+#!/bin/bash
+
+pdflatex main
+bibtex main
+pdflatex main
+pdflatex main
+initpage=1
+files=('abstract' 'prop' 'bib' 'justification' 'resources')
+for filenameroot in ${files[*]}; do
+    finalpageplusone=$(grep '\\setcounter{page}{[0-9]\{1,\}}' ${filenameroot}.aux | grep -o '[0-9]\{1,\}')
+    finalpage=$(( $finalpageplusone - 1))
+    qpdf --empty --pages main.pdf $initpage-$finalpage -- ${filenameroot}$1.pdf
+    initpage=$finalpageplusone
+done

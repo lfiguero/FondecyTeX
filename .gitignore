@@ -1,0 +1,15 @@
+# Output files
+main.pdf
+abstract*.pdf
+bib*.pdf
+justification*.pdf
+prop*.pdf
+resources*.pdf
+
+# LaTeX auxiliary files
+*.aux
+*.log
+*.bbl
+*.blg
+*.out
+*.synctex.gz
